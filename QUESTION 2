@@ -1,0 +1,19 @@
+> library(ggplot2)
+> Countries <- c('United States','China','India','United
++                   Kingdom','Brazil','Germany','Turkey','France','Australia')
+> Doses <- c(213.39,195.02,127.13,43.46,33.81,22.94,20.28,17.45,1.65)
+> 
+> Covid19vaccine <- data.frame(Countries, Doses)
+> million <- "million"
+> 
+> ggplot(Covid19vaccine,aes(x=reorder(Countries,Doses), y=Doses))+
++ ylab("Doses(per million)")+
++ xlab("Countries")+
++ geom_bar(stat = 'identity', aes(fill = Doses))+
++ labs(title="COVID-19 vaccine doses administrated, April 20,2021",
++      caption=("Total number of vaccination doses administrated"))+
++ geom_text(aes(label=paste(Doses,million)),y=200,hjust=0.7,color="red")+
++ coord_flip()
+> 
+> ggsave("plot.png", )
+Saving 14.1 x 7.1 in image
